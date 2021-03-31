@@ -21,7 +21,7 @@ spring:
     password: QianXing
     url: jdbc:mysql://106.2.1.58:3306/management_system?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    ## Druid数据源专有配置, SpringBoot默认不注册这些配置需要自己绑定
+    ## Druid data source owen configuration
     initialSize: 2
     minIdle: 5
     maxActive: 30

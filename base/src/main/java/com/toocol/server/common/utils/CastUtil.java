@@ -6,7 +6,7 @@ package com.toocol.server.common.utils;
  */
 public class CastUtil {
     /**
-     * 自动推导类型转换，忽视 unchecked 警告
+     * Automatically deduces type conversions, ignoring "unchecked" warnings
      *
      * @param obj
      * @param <T>
