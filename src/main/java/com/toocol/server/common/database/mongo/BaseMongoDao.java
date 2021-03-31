@@ -1,4 +1,4 @@
-package com.toocol.server.common.database;
+package com.toocol.server.common.database.mongo;
 
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
@@ -36,11 +36,11 @@ public abstract class BaseMongoDao<K, T extends IDocument> {
         }
     }
 
-    public Query query(CriteriaDefinition criteriaDefinition) {
+    protected Query query(CriteriaDefinition criteriaDefinition) {
         return new Query(criteriaDefinition);
     }
 
-    public Criteria where(String key) {
+    protected Criteria where(String key) {
         return Criteria.where(key);
     }
 

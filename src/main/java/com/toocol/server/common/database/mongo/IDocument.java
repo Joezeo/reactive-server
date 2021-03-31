@@ -1,4 +1,4 @@
-package com.toocol.server.common.database;
+package com.toocol.server.common.database.mongo;
 
 /**
  * @author ZhaoZhe
