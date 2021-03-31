@@ -1,4 +1,4 @@
-package com.toocol.server.common.web;
+package com.toocol.common.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 

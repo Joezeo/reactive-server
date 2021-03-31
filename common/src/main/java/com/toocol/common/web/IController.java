@@ -1,4 +1,4 @@
-package com.toocol.server.common.web;
+package com.toocol.common.web;
 
 /**
  * @author ZhaoZhe

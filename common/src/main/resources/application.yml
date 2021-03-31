@@ -1,0 +1,34 @@
+# server config
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    session:
+      timeout: PT60M
+
+# database config
+## mongo
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: guitarchive-server
+## datasource config
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    username: root
+#    password: QianXing
+#    url: jdbc:mysql://106.2.1.58:3306/management_system?useUnicode=true&characterEncoding=utf8
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    ### Druid data source own configuration
+#    initialSize: 2
+#    minIdle: 5
+#    maxActive: 30
+#    poolPreparedStatements: true
+#    maxOpenPreparedStatements: 100
+#    testWhileIdle: true
+#    timeBetweenEvictionRunsMillis: 180000
+#    validationQuery: select 1
+#    maxWait: 0
+## MyBatis use annotation to config

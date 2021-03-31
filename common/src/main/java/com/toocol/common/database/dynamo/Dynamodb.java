@@ -1,5 +1,6 @@
-package com.toocol.server.common.database.mongo;
+package com.toocol.common.database.dynamo;
 
+import com.toocol.common.database.IDocument;
 import org.springframework.stereotype.Repository;
 
 import java.lang.annotation.ElementType;
@@ -8,16 +9,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author ZhaoZhe
- * @email joezane.cn@gmail.com
- * @date 2020/12/16 14:17
+ * @author Joezeo
+ * @date 2020/12/20 15:27
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Repository
-public @interface Mongodb {
+public @interface Dynamodb {
     /**
-     * the document class of database dao
+     * the document class of dynamo db dao
      */
     Class<? extends IDocument> documentClass();
 }

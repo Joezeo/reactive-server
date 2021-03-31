@@ -1,8 +1,9 @@
-package com.toocol.server.common.database.mongo;
+package com.toocol.common.database.mongo;
 
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
-import com.toocol.server.common.utils.CastUtil;
+import com.toocol.common.database.IDocument;
+import com.toocol.common.utils.CastUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -27,12 +28,12 @@ public abstract class BaseMongoDao<K, T extends IDocument> {
     public BaseMongoDao(MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
 
-        Mongodb mongdb = this.getClass().getAnnotation(Mongodb.class);
-        if (mongdb == null) {
+        Mongodb mongoDb = this.getClass().getAnnotation(Mongodb.class);
+        if (mongoDb == null) {
             docClazz = null;
             log.error("the database dao {} should annotate @Mongodb, dao was invalid", this.getClass().getName());
         } else {
-            docClazz = CastUtil.cast(mongdb.documentClass());
+            docClazz = CastUtil.cast(mongoDb.documentClass());
         }
     }
 

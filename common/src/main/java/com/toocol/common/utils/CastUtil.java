@@ -1,4 +1,4 @@
-package com.toocol.server.common.utils;
+package com.toocol.common.utils;
 
 /**
  * @author Joezeo

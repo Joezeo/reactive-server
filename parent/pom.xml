@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -15,57 +14,58 @@
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>parent</name>
+    <packaging>pom</packaging>
     <description>this is the parent pom project of all servers.</description>
 
     <properties>
         <java.version>1.8</java.version>
 
+        <secondary.dependency.dir>${basedir}/../secondary-dependency/pom.xml</secondary.dependency.dir>
+        <thirdpart.dependency.dir>${basedir}/../thirdpart-dependency/pom.xml</thirdpart.dependency.dir>
+
+        <secondary.dependency.version>0.0.1-SNAPSHOT</secondary.dependency.version>
         <thirdpart.dependency.version>0.0.1-SNAPSHOT</thirdpart.dependency.version>
     </properties>
 
+    <dependencies>
+        <!--            Inherited dependency from SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
-            <!--            Inherited dependency from SpringBoot -->
+            <!--            Manage own dependencies -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <optional>true</optional>
+                <groupId>com.toocol</groupId>
+                <artifactId>secondary-dependency</artifactId>
+                <version>${secondary.dependency.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <systemPath>${secondary.dependency.dir}</systemPath>
             </dependency>
 
-            <!--            Manage own dependencies -->
             <dependency>
                 <groupId>com.toocol</groupId>
                 <artifactId>thirdpart-dependency</artifactId>
                 <version>${thirdpart.dependency.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <systemPath>${thirdpart.dependency.dir}</systemPath>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
