@@ -29,7 +29,7 @@
     </properties>
 
     <dependencies>
-        <!--            Inherited dependency from SpringBoot -->
+        <!-- Inherited dependency from SpringBoot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -49,7 +49,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--            Manage own dependencies -->
+            <!-- Manage own dependencies -->
             <dependency>
                 <groupId>com.toocol</groupId>
                 <artifactId>secondary-dependency</artifactId>
@@ -66,7 +66,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <!--            Import dependency management from Spring Boot -->
+            <!-- Import dependency management from Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

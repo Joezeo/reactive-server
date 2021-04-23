@@ -26,7 +26,7 @@
     </properties>
 
     <dependencies>
-        <!--        SpringBoot relative dependencies.-->
+        <!-- SpringBoot relative dependencies.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -46,7 +46,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--        third part dependencies, set the scope to provided, thirdpart-dependency will provide these packages. -->
+        <!-- third part dependencies, set the scope to provided, thirdpart-dependency will provide these packages. -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -61,7 +61,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--        common third part dependency, not exclude -->
+        <!-- common third part dependency, not exclude -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
