@@ -3,6 +3,8 @@ package com.toocol.common.web;
 import com.alibaba.fastjson.JSONObject;
 
 /**
+ * the static class to response
+ *
  * @author ZhaoZhe
  * @email joezane.cn@gmail.com
  * @date 2021/2/3 10:34
