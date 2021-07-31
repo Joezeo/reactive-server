@@ -20,12 +20,11 @@
     <properties>
         <java.version>1.8</java.version>
 
-        <fastjson.version>1.2.75</fastjson.version>
-        <commons.lang3.version>3.11</commons.lang3.version>
-        <guava.version>30.1-jre</guava.version>
+        <thirdpart.dependency.version>0.0.1-SNAPSHOT</thirdpart.dependency.version>
     </properties>
 
     <dependencies>
+
         <!-- SpringBoot relative dependencies.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,24 +49,39 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- common third part dependency, not exclude -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.12</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.toocol</groupId>
+                <artifactId>thirdpart-dependency</artifactId>
+                <version>${thirdpart.dependency.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <finalName>guitarchive.common.${version}</finalName>
