@@ -13,7 +13,7 @@ public class AkkaSystemConfig {
 
     @Bean("actorSystem")
     public ActorSystem actorSystem() {
-        return ActorSystem.apply("guitarchive-actor-system");
+        return ActorSystem.apply("basis-actor-system");
     }
 
 }
