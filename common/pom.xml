@@ -45,7 +45,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- third part dependencies, set the scope to provided, thirdpart-dependency will provide these packages. -->
+        <!-- third part dependencies, set the scope to provided, parent will provide these packages. -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
