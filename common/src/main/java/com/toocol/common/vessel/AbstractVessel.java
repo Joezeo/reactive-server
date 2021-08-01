@@ -61,4 +61,5 @@ public abstract class AbstractVessel implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         AbstractVessel.applicationContext = applicationContext;
     }
+
 }

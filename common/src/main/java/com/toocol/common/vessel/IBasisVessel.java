@@ -1,5 +1,7 @@
 package com.toocol.common.vessel;
 
+import org.springframework.context.ApplicationContext;
+
 /**
  * to put and manage the spring injected object.
  * this interface is provided for the consume side.
@@ -16,4 +18,12 @@ public interface IBasisVessel<T extends AbstractVessel> {
      */
     T vessel();
 
+    /**
+     * get the spring's ApplicationContext
+     *
+     * @return
+     */
+    default ApplicationContext applicationContext() {
+        return AbstractVessel.applicationContext;
+    }
 }
