@@ -46,11 +46,9 @@ public abstract class AbstractVessel implements ApplicationContextAware {
                 field.setAccessible(true);
                 field.set(this, applicationContext.getBean(field.getType()));
             } catch (BeansException e) {
-                System.out.println("Bean: " + field.getType().getName() + " not exist, skip");
                 log.warn("Bean: {} not exist, skip", field.getType().getName());
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
-                System.out.println();
                 log.error("inject field:{} into vessel failed, stop the server.", field.getName());
                 System.exit(-1);
             }
