@@ -1,18 +1,26 @@
 package com.toocol.common;
 
-import com.toocol.common.utils.SpringGetter;
 import com.toocol.common.vessel.AbstractVessel;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Joezeo
  * @date 2021/8/1 0:28
  */
-@Component
-public class BasisInitAfter implements CommandLineRunner {
+@AllArgsConstructor
+public abstract class BasisInitAfter implements CommandLineRunner {
+
+    public final AbstractVessel vessel;
+
     @Override
     public void run(String... args) throws Exception {
-        SpringGetter.getBean(AbstractVessel.class).ifPresent(AbstractVessel::init);
+        vessel.init();
+        init();
     }
+
+    /**
+     * initial the server
+     */
+    public abstract void init();
 }
