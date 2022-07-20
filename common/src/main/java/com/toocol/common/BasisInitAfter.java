@@ -1,6 +1,7 @@
 package com.toocol.common;
 
 import com.toocol.common.vessel.AbstractVessel;
+import com.toocol.common.vessel.DefaultVessel;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 
@@ -11,16 +12,17 @@ import org.springframework.boot.CommandLineRunner;
 @AllArgsConstructor
 public abstract class BasisInitAfter implements CommandLineRunner {
 
-    public final AbstractVessel vessel;
-
     @Override
     public void run(String... args) throws Exception {
-        vessel.init();
+        DefaultVessel vessel = AbstractVessel.get().as();
+        vessel.routerInitializer.initialize();
+        vessel.actorInitializer.initialize();
+        vessel.eventSystemInitializer.initialize();
         init();
     }
 
     /**
-     * initial the server
+     * sub project's initialize process
      */
     public abstract void init();
 }

@@ -1,15 +1,20 @@
 package com.toocol.common.vessel;
 
+import com.toocol.common.functional.Asable;
+import com.toocol.common.functional.OnceCheck;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.lang.NonNull;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * this abstract vessel is provided for product side.
@@ -18,15 +23,19 @@ import java.util.List;
  * @date 2021/7/31 23:41
  */
 @Slf4j
-public abstract class AbstractVessel implements ApplicationContextAware {
-
-    public static ApplicationContext applicationContext;
+public abstract class AbstractVessel implements ApplicationContextAware, Asable, OnceCheck {
+    private static final AtomicBoolean checker = new AtomicBoolean();
+    protected static ApplicationContext applicationContext;
 
     public static AbstractVessel get() {
         return applicationContext.getBean(AbstractVessel.class);
     }
 
+    @PostConstruct
     public void init() {
+        if (checkOnce()) {
+            return;
+        }
         Class<?> superClass = this.getClass();
         List<Field> fields = new ArrayList<>();
         do {
@@ -40,6 +49,9 @@ public abstract class AbstractVessel implements ApplicationContextAware {
                     return;
                 }
                 if (field.getType().equals(Logger.class)) {
+                    return;
+                }
+                if (field.getType().equals(AtomicBoolean.class)) {
                     return;
                 }
 
@@ -56,8 +68,12 @@ public abstract class AbstractVessel implements ApplicationContextAware {
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         AbstractVessel.applicationContext = applicationContext;
     }
 
+    @Override
+    public AtomicBoolean provideChecker() {
+        return checker;
+    }
 }

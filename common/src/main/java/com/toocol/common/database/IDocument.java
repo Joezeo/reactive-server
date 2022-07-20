@@ -6,4 +6,5 @@ package com.toocol.common.database;
  * @date 2020/12/16 11:32
  */
 public interface IDocument {
+
 }

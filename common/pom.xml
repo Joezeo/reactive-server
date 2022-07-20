@@ -4,13 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.toocol</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent/pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.toocol</groupId>
     <artifactId>common</artifactId>
     <version>0.0.1</version>
     <name>common</name>
@@ -24,50 +23,41 @@
     </properties>
 
     <dependencies>
-
         <!-- SpringBoot relative dependencies.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <scope>provided</scope>
+            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <scope>provided</scope>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
         </dependency>
 
         <!-- third part dependencies, set the scope to provided, parent will provide these packages. -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-actor_2.12</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -84,6 +74,6 @@
     </dependencyManagement>
 
     <build>
-        <finalName>guitarchive.common.${version}</finalName>
+        <finalName>guitarcs.common.${version}</finalName>
     </build>
 </project>

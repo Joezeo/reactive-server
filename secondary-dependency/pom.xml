@@ -13,7 +13,7 @@
     <properties>
         <java.version>1.8</java.version>
 
-        <guitarchive.common.version>0.0.1</guitarchive.common.version>
+        <guitarcs.common.version>0.0.1</guitarcs.common.version>
     </properties>
 
     <dependencyManagement>
@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>com.toocol</groupId>
                 <artifactId>common</artifactId>
-                <version>${guitarchive.common.version}</version>
+                <version>${guitarcs.common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
