@@ -17,7 +17,7 @@ public class AddArticleAction extends AbstractHttpAction<String> implements IVes
     public Mono<String> action(JSONObject param) throws Exception {
         ArticleAddress articleAddress = ArticleAddress.builder()
                 .digest(UUID.randomUUID().toString())
-                .url("https://www.guitarcs.article/1001")
+                .url("https://www.toocol.article/1001")
                 .build();
                 
         return vessel().articleAddressRepo.insert(articleAddress)
