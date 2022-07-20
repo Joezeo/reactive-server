@@ -30,6 +30,14 @@ public class AddArticleAction extends AbstractHttpAction<String> implements IVes
 
 **2. Reactive mongodb repository**  
 Just create a document class implement `com.toocol.common.database.IDocument` and add annotation `org.springframework.data.mongodb.core.mapping.Document`, then create a interface extends `com.toocol.common.database.mongo.AsyncMongoRepo`:  
+```yml
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: guitarcs-server
+```
 ```java
 public interface ArticleAddressRepo extends AsyncMongoRepo<ObjectId, ArticleAddress> {
 
