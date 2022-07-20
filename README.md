@@ -116,7 +116,7 @@ public class Vessel extends DefaultVessel {
 ```
 ```java
 /**
-* This class is created to acquire Vessel instance
+* This interface was created to acquire Vessel instance
 */
 public interface IVessel extends IBasisVessel<Vessel> {
     /**
