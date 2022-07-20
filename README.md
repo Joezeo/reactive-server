@@ -109,7 +109,7 @@ public class ArticleAddress implements IDocument {
 ```
 
 **3. Vessel**  
-This template using extra Vessel to avoid the problem of circular dependency, you need add two class like this in your own project:  
+This template using extra Vessel to avoid the problem of circular dependency, you need add two class like this in your own project(or you can just ignore it with your own way):  
 ```java
 @Primary
 @Component
