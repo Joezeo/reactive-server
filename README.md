@@ -36,7 +36,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: guitarcs-server
+      database: your-database
 ```
 ```java
 public interface ArticleAddressRepo extends AsyncMongoRepo<ObjectId, ArticleAddress> {
