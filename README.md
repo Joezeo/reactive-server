@@ -9,7 +9,6 @@ A simple test server bases on this template from my own have `4000+` throughput 
 The most important class was `com.toocol.common.web.AbstractHttpAction`, one HttpAction represent one http request handler, and add annotation `com.toocol.common.web.ActionMapping` to register http uri mapping. For example:  
 ```java
 @Slf4j
-@AllArgsConstructor
 // uri is represent to "/article/add_article"
 @ActionMapping(module = "article", action = "add_article")
 public class AddArticleAction extends AbstractHttpAction<String> implements IVessel {
