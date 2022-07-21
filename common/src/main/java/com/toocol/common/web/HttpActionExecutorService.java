@@ -15,17 +15,25 @@ import java.util.concurrent.*;
 @SuppressWarnings("all")
 public final class HttpActionExecutorService {
     /**
+     * Assumed average CPU cost in second per task.
+     */
+    private static final double ASSUMED_CPU_COST = 0.1;
+    /**
+     * Assumed average IO cost in second per task.
+     */
+    private static final double ASSUMED_IO_COST = 0.3;
+    /**
      * Assumed average time cost in second per task.
      */
-    private static final double ASSUME_AVERAGE_TASK_COST = 0.3;
+    private static final double ASSUMED_AVERAGE_TASK_COST = ASSUMED_CPU_COST + ASSUMED_IO_COST;
     /**
      * On average, each core thread can have this number of tasks waiting for it to process in one second.
      */
-    private static final double WAITING_TASK_PER_THREAD = 1 / ASSUME_AVERAGE_TASK_COST;
+    private static final double WAITING_TASK_PER_THREAD = 1 / ASSUMED_AVERAGE_TASK_COST;
     /**
      * Core thread number of this executor service.
      */
-    private static final int CORE_POOL_SIZE = OsUtil.availableProcessors() * 2;
+    private static final int CORE_POOL_SIZE = (int) (OsUtil.availableProcessors() * (1 + ASSUMED_IO_COST / ASSUMED_CPU_COST));
     /**
      * Cache thread keep alive time.
      */

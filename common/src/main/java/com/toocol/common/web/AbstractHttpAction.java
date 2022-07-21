@@ -16,7 +16,7 @@ public abstract class AbstractHttpAction<R> {
      * @param param    the request param
      * @param consumer the consumer of subscriber
      */
-    public void doAction(JSONObject param, Consumer<R> consumer) throws Exception {
+    protected void doAction(JSONObject param, Consumer<R> consumer) throws Exception {
         action(param).subscribe(consumer);
     }
 
@@ -25,6 +25,6 @@ public abstract class AbstractHttpAction<R> {
      * @return mono result
      * @throws Exception exception
      */
-    public abstract Mono<R> action(JSONObject param) throws Exception;
+    protected abstract Mono<R> action(JSONObject param) throws Exception;
 
 }

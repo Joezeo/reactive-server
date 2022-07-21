@@ -1,5 +1,7 @@
 package com.toocol.common.vessel;
 
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
 import com.toocol.common.functional.Asable;
 import com.toocol.common.functional.OnceCheck;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +13,7 @@ import org.springframework.lang.NonNull;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -25,6 +25,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Slf4j
 public abstract class AbstractVessel implements ApplicationContextAware, Asable, OnceCheck {
     private static final AtomicBoolean checker = new AtomicBoolean();
+    private static final Set<Class<?>> ignoreInject = new HashSet<Class<?>>() {
+        {
+            add(ApplicationContext.class);
+            add(ActorSystem.class);
+            add(ActorRef.class);
+            add(AtomicBoolean.class);
+            add(Logger.class);
+            add(Set.class);
+        }
+    };
+
     protected static ApplicationContext applicationContext;
 
     public static AbstractVessel get() {
@@ -45,13 +56,7 @@ public abstract class AbstractVessel implements ApplicationContextAware, Asable,
 
         fields.forEach(field -> {
             try {
-                if (field.getType().equals(ApplicationContext.class)) {
-                    return;
-                }
-                if (field.getType().equals(Logger.class)) {
-                    return;
-                }
-                if (field.getType().equals(AtomicBoolean.class)) {
+                if (ignoreInject.contains(field.getType())) {
                     return;
                 }
 
