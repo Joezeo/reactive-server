@@ -78,18 +78,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.toocol</groupId>
-                <artifactId>thirdpart-dependency</artifactId>
-                <version>${thirdpart.dependency.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <finalName>guitarcs.common.${version}</finalName>
     </build>

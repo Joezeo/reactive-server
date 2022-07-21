@@ -23,9 +23,6 @@
         <spring.boot.denpendency.version>2.4.3</spring.boot.denpendency.version>
         <secondary.dependency.version>0.0.1-SNAPSHOT</secondary.dependency.version>
         <thirdpart.dependency.version>0.0.1-SNAPSHOT</thirdpart.dependency.version>
-
-        <!-- Replace the Selenium version on the SpringBoot Dependency. -->
-        <selenium.version>4.0.0-beta-2</selenium.version>
     </properties>
 
     <dependencyManagement>
