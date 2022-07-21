@@ -1,6 +1,10 @@
 package com.toocol.common.events;
 
+import akka.actor.ActorRef;
+import com.toocol.common.akka.CreateActor;
 import com.toocol.common.functional.OnceCheck;
+import com.toocol.common.vessel.AbstractVessel;
+import com.toocol.common.vessel.DefaultVessel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +26,10 @@ public class EventSystemInitializer implements OnceCheck {
             return;
         }
 
-        SyncEventDispatcher.listenerMap = null;
-        AsyncEventDispatcher.listenerMap = null;
+        DefaultVessel vessel = AbstractVessel.get().as();
+        if (vessel.asyncEventDispatcherRef != null) {
+            vessel.asyncEventDispatcherRef.tell(CreateActor.of(), ActorRef.noSender());
+        }
     }
 
     @Override

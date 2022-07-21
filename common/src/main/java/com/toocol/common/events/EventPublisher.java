@@ -15,9 +15,9 @@ public class EventPublisher {
 
     public void publish(AbstractEvent event) {
         DefaultVessel vessel = AbstractVessel.get().as();
-        if (event instanceof AsyncEvent) {
+        if (event instanceof SyncEvent) {
             vessel.syncEventDispatcher.dispatch(event.as());
-        } else if (event instanceof SyncEvent) {
+        } else if (event instanceof AsyncEvent) {
             vessel.asyncEventDispatcherRef.tell(event, ActorRef.noSender());
         }
     }

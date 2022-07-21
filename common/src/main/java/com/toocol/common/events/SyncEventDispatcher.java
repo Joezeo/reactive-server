@@ -14,7 +14,7 @@ import java.util.Optional;
 @Component
 public class SyncEventDispatcher {
 
-    protected static Map<Class<? extends SyncEvent>, List<AbstractEventListener<?>>> listenerMap = null;
+    protected static Map<Class<? extends SyncEvent>, List<IEventListener<?>>> listenerMap = null;
 
     public void dispatch(SyncEvent event) {
         if (listenerMap == null) {

@@ -1,7 +1,6 @@
 package com.toocol.common.vessel;
 
 import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
 import com.toocol.common.functional.Asable;
 import com.toocol.common.functional.OnceCheck;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +27,6 @@ public abstract class AbstractVessel implements ApplicationContextAware, Asable,
     private static final Set<Class<?>> ignoreInject = new HashSet<Class<?>>() {
         {
             add(ApplicationContext.class);
-            add(ActorSystem.class);
             add(ActorRef.class);
             add(AtomicBoolean.class);
             add(Logger.class);
