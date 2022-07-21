@@ -6,7 +6,7 @@ A simple test server bases on this template from my own have `4000+` throughput 
 
 ### Usage
 **1. Reactive Http action**  
-The most important class was `com.toocol.common.web.AbstractHttpAction`, one HttpAction represent one http request handler, and add annotation `com.toocol.common.web.ActionMapping` to register http uri mapping. For example:  
+The most important class was `com.toocol.common.web.AbstractHttpAction`, one HttpAction represent one http request handler, and add annotation `com.toocol.common.web.ActionMapping` to register http uri mapping. By default, the required HTTP request method is `post`, and the `content-type` is `application/json`.This is an example:  
 ```java
 @Slf4j
 // uri is represent to "/article/add_article"
