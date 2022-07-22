@@ -47,6 +47,7 @@ public interface ArticleAddressRepo extends AsyncMongoRepo<ObjectId, ArticleAddr
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Document(collection = "article_address")
 public class ArticleAddress implements IDocument {
     private static final long serialVersionUID = -4092392708753755910L;
@@ -70,39 +71,6 @@ public class ArticleAddress implements IDocument {
 
     public void setId(String id) {
         this.id = new ObjectId(id);
-    }
-
-    public static ArticleAddressBuilder builder() {
-        return new ArticleAddressBuilder();
-    }
-
-    public static final class ArticleAddressBuilder {
-        private String digest;
-        private String url;
-
-        private ArticleAddressBuilder() {
-        }
-
-        public static ArticleAddressBuilder anArticleAddress() {
-            return new ArticleAddressBuilder();
-        }
-
-        public ArticleAddressBuilder digest(String digest) {
-            this.digest = digest;
-            return this;
-        }
-
-        public ArticleAddressBuilder url(String url) {
-            this.url = url;
-            return this;
-        }
-
-        public ArticleAddress build() {
-            ArticleAddress articleAddress = new ArticleAddress();
-            articleAddress.setDigest(digest);
-            articleAddress.setUrl(url);
-            return articleAddress;
-        }
     }
 }
 ```
