@@ -12,7 +12,7 @@ import com.toocol.common.web.HttpActionRouterInitializer;
 import org.springframework.stereotype.Component;
 
 /**
- * every sub server should have its own Vessel and annotated {@link org.springframework.context.annotation.Primary},
+ * every subproject should have its own Vessel and annotated {@link org.springframework.context.annotation.Primary},
  * if it does not, we just use this DefaultVessel
  *
  * @author Joezeo
@@ -22,9 +22,7 @@ import org.springframework.stereotype.Component;
 public class DefaultVessel extends AbstractVessel {
 
     /**
-     * this field default is null,
-     * if the subproject need use akka system, please use annotation {@link org.springframework.context.annotation.Import} to
-     * import the {@link com.toocol.common.akka.AkkaSystemConfig} manual.
+     * the akka base actor system, created by {@link com.toocol.common.akka.AkkaSystemConfig}.
      */
     public ActorSystem actorSystem;
 
@@ -42,6 +40,11 @@ public class DefaultVessel extends AbstractVessel {
      * the initializer of async/sync event system.
      */
     public EventSystemInitializer eventSystemInitializer;
+
+    /**
+     * the actor ref of {@link com.toocol.common.akka.ActorTickScheduler}
+     */
+    public ActorRef actorTickScheduler;
 
     /**
      * the actor ref of {@link AsyncEventDispatcher}

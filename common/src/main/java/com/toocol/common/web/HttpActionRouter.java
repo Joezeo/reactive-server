@@ -76,6 +76,10 @@ public final class HttpActionRouter {
                     param.put("ip", IpUtils.ipAddr(request));
 
                     abstractHttpAction.doAction(param, result -> {
+                        if (timeRecord.stop().timeConsume() > LONG_TIME_EXECUTION_DETECT) {
+                            log.warn("long-time action execution detected, {}", timeRecord);
+                        }
+
                         EncryptResponse encrypt = abstractHttpAction.getClass().getAnnotation(EncryptResponse.class);
                         if (encrypt == null) {
                             monoSink.success(builder.code(200).success(true).data(result).toString());
@@ -87,10 +91,6 @@ public final class HttpActionRouter {
                             log.warn("Enable response data encrypt should implement IResponseEncryptor and add it to spring context.");
                             monoSink.success(builder.code(200).success(true).data(result).toString());
                             return;
-                        }
-
-                        if (timeRecord.stop().timeConsume() > LONG_TIME_EXECUTION_DETECT) {
-                            log.warn("long-time action execution detected, {}", timeRecord);
                         }
 
                         monoSink.success(builder.code(200).success(true).encode(true).data(encryptor.encrypt(request)).toString());

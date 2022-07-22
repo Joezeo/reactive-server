@@ -5,5 +5,5 @@ package com.toocol.common.events;
  * @date: 2022/7/21 0:35
  * @version: 0.0.1
  */
-public abstract class SyncEvent extends AbstractEvent{
+public abstract class SyncEvent extends AbstractEvent {
 }

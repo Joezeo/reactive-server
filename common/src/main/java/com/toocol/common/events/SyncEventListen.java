@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *  Each synchronization listener needs to add this annotation.
+ * Each synchronization listener needs to add this annotation.
  *
  * @author ：JoeZane (joezane.cn@gmail.com)
  * @date: 2022/7/22 1:04

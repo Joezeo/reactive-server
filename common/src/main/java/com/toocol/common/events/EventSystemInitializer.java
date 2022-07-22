@@ -1,7 +1,7 @@
 package com.toocol.common.events;
 
 import akka.actor.ActorRef;
-import com.toocol.common.akka.CreateActor;
+import com.toocol.common.akka.ActorCreate;
 import com.toocol.common.functional.OnceCheck;
 import com.toocol.common.vessel.AbstractVessel;
 import com.toocol.common.vessel.DefaultVessel;
@@ -28,7 +28,7 @@ public class EventSystemInitializer implements OnceCheck {
 
         DefaultVessel vessel = AbstractVessel.get().as();
         if (vessel.asyncEventDispatcherRef != null) {
-            vessel.asyncEventDispatcherRef.tell(CreateActor.of(), ActorRef.noSender());
+            vessel.asyncEventDispatcherRef.tell(ActorCreate.of, ActorRef.noSender());
         }
     }
 

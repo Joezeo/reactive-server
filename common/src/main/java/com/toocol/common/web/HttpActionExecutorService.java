@@ -37,7 +37,7 @@ public final class HttpActionExecutorService {
     /**
      * Cache thread keep alive time.
      */
-    private static final int KEEP_ALIVE_TIME = 60000;
+    private static final int KEEP_ALIVE_TIME = 600000;
     /**
      * The time interval of rejected task put back in the executor service.
      */
